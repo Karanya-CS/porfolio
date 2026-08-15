@@ -1,355 +1,587 @@
+<!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Karanya | Portfolio</title>
-     <link rel="icon" href="C:\Users\karanya\Desktop\portfolio\hi.png">
-    
-    <!-- Tailwind CSS (CDN for development only) -->
-    <script>
-        // Suppress Tailwind CDN warning
-        if (typeof console !== 'undefined' && console.warn) {
-            const originalWarn = console.warn;
-            console.warn = function(...args) {
-                if (args[0] && typeof args[0] === 'string' && args[0].includes('tailwindcss.com')) {
-                    return; // Suppress Tailwind CDN warning
-                }
-                originalWarn.apply(console, args);
-            };
-        }
-    </script>
+
+    <meta name="description"
+          content="Karanya C.S - AI/ML, Generative AI and Full-Stack Developer Portfolio">
+
+    <meta name="author" content="C.S. Karanya">
+
+    <title>Karanya | AI/ML Portfolio</title>
+
+    <!-- IMPORTANT:
+         Do NOT use C:\Users\... paths on GitHub Pages.
+         hi.png must be in the same folder as index.html.
+    -->
+    <link rel="icon" type="image/png" href="hi.png">
+
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Fira+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Fira+Code:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="index.css">
 </head>
-<body class="body-main" data-theme="dark" data-lang="en" data-dir="ltr">
-    
-    <!-- Loading Screen -->
-    <div class="loader-screen" id="loader">
-        <div class="loader-content">
-            <div class="loader-code-text">
-                <div class="code-line" data-line="1">const portfolio = {</div>
-                <div class="code-line" data-line="2">  loading: true,</div>
-                <div class="code-line" data-line="3">  status: 'initializing...'</div>
-                <div class="code-line" data-line="4">};</div>
+
+<body class="body-main"
+      data-theme="dark"
+      data-lang="en"
+      data-dir="ltr">
+
+<!-- =========================================================
+     LOADING SCREEN
+========================================================= -->
+
+<div class="loader-screen" id="loader">
+
+    <div class="loader-content">
+
+        <div class="loader-code-text">
+
+            <div class="code-line" data-line="1">
+                const portfolio = {
             </div>
-            <div class="loader-spinner-wrapper">
-                <div class="loader-spinner"></div>
+
+            <div class="code-line" data-line="2">
+                loading: true,
             </div>
-            <div class="loader-progress-wrapper">
-                <div class="loader-progress-bar"></div>
+
+            <div class="code-line" data-line="3">
+                status: 'initializing...'
             </div>
-            <div class="loader-percentage" id="loaderPercent">0%</div>
+
+            <div class="code-line" data-line="4">
+                };
+            </div>
+
         </div>
+
+        <div class="loader-spinner-wrapper">
+            <div class="loader-spinner"></div>
+        </div>
+
+        <div class="loader-progress-wrapper">
+            <div class="loader-progress-bar"></div>
+        </div>
+
+        <div class="loader-percentage" id="loaderPercent">
+            0%
+        </div>
+
     </div>
 
-    <!-- Navigation Header -->
-    <header class="main-header" id="header">
-        <nav class="nav-container">
-            <div class="nav-brand">
-                <div class="brand-logo">
-                    <span class="logo-bracket">&lt;</span>
-                    <span class="logo-text">Karanya</span>
-                    <span class="logo-bracket">/&gt;</span>
-                </div>
-            </div>
-            
-            <div class="nav-menu" id="navMenu">
-                <a href="#home" class="nav-link active" data-section="home">
-                    <i class="fas fa-home"></i>
-                    <span class="nav-text" data-text-en="Home" >Home</span>
-                </a>
-                <a href="#about" class="nav-link" data-section="about">
-                    <i class="fas fa-user"></i>
-                    <span class="nav-text" data-text-en="About" >About</span>
-                </a>
-                <a href="#skills" class="nav-link" data-section="skills">
-                    <i class="fas fa-code"></i>
-                    <span class="nav-text" data-text-en="Skills" >Skills</span>
-                </a>
-                <a href="#experience" class="nav-link" data-section="experience">
-                    <i class="fas fa-briefcase"></i>
-                    <span class="nav-text" data-text-en="Experience" >Experience</span>
-                </a>
-                <a href="#projects" class="nav-link" data-section="projects">
-                    <i class="fas fa-rocket"></i>
-                    <span class="nav-text" data-text-en="Projects" >Projects</span>
-                </a>
-                <a href="#contact" class="nav-link" data-section="contact">
-                    <i class="fas fa-envelope"></i>
-                    <span class="nav-text" data-text-en="Contact" >Contact</span>
-                </a>
-            </div>
-            
-            <div class="nav-controls">
-                <button class="lang-toggle" id="langToggle" title="Toggle Language">
-                    <i class="fas fa-language"></i>
-                    <span class="lang-text">AR</span>
-                </button>
-                <a href="KARANYA_C.S_resume.pdf"
-                   download
-                   class="resume-nav-link"
-                   title="Download Resume"
-                   aria-label="Download Resume">
-                    <i class="fas fa-download"></i>
-                </a>
-                <button class="theme-toggle" id="themeToggle" title="Toggle Theme">
-                    <i class="fas fa-moon"></i>
-                </button>
-                <button class="menu-toggle" id="menuToggle" title="Toggle Menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </div>
-        </nav>
-    </header>
-
-    <!-- Main Content -->
-    <main class="main-content">
-        
-        <!-- Hero Section -->
-        <section id="home" class="hero-section">
-            <div class="hero-background">
-                <div class="code-grid-bg"></div>
-                <div class="floating-particles" id="particles"></div>
-            </div>
-            
-            <div class="hero-container">
-                <div class="hero-content">
-                    <div class="hero-greeting">
-                        <span class="greeting-text" data-text-en="Hello, I'm" >Hello, I'm</span>
-                        <span class="greeting-cursor">|</span>
-                    </div>
-                    
-                    <h1 class="hero-name" id="heroName">
-                        <span class="name-prefix">C.S. Karanya</span>
-                       
-                    </h1>
-                    
-<div class="hero-title">
-    <span class="title-prefix">Artificial Intelligence & Machine Learning</span>
-    <span class="title-text">AI/ML | Generative AI | Full-Stack Development</span>
 </div>
 
-                    
-                    <p class="hero-description" data-text-en="Passionate developer creating exceptional digital experiences with modern technologies." >
-                    Computer Science undergraduate specializing in Artificial Intelligence,Machine Learning, UI/UX and Full-Stack Development.
-                    </p>
-                    
-                    <div class="hero-buttons">
-                        <a href="#contact" class="btn btn-primary">
-                            <span data-text-en="Get In Touch" >Get In Touch</span>
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
-                        <a href="#projects" class="btn btn-secondary">
-                            <span data-text-en="View Projects" >View Projects</span>
-                            <i class="fas fa-code"></i>
-                        </a>
-                    </div>
-                    
-                    <div class="hero-social">
-                        <a href="https://www.github.com/Karanya-CS" class="social-icon" title="GitHub">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/in/karanya-c-s-480546299" class="social-icon" title="LinkedIn">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="https://medium.com/@karanya104" class="social-icon" title="Medium">
-                            <i class="fab fa-medium"></i>
-                        </a>
-                        <a href="https://www.codechef.com/users/kind_jaguar_17" class="social-icon" title="Codechef">
-                        <i class="fas fa-laptop-code"></i>
 
-                        </a>
-<a href="https://mail.google.com/mail/?view=cm&fs=1&to=karanya104@gmail.com"
-   target="_blank"
-   rel="noopener noreferrer"
-   class="social-icon"
-   title="Email"
-   aria-label="Email Karanya">
-    <i class="fas fa-envelope"></i>
-</a>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="hero-image-wrapper">
-                    <div class="hero-image-container">
-                        <div class="profile-image-glow"></div>
-                        <div class="profile-image-frame">
-                            <div class="profile-image" id="profileImage">
-                                <img src="ai agent.jpg" alt="Profile Photo" class="profile-photo" class="image2">
-                                <div class="profile-placeholder">
-                                   
-                                </div>
-                            </div>
-                        </div>
-                        <div class="floating-badge badge-1">
-                            <i class="fab fa-python"></i>
-                            <div class="badge-content">
-                                <span class="badge-title">AI / ML</span>
-                                <span class="badge-libs">Python, Machine Learning, Deep Learning</span>
-                            </div>
-                        </div>
-                        <div class="floating-badge badge-2">
-                            <i class="fab fa-html5"></i>
-                            <div class="badge-content">
-                                <span class="badge-title"> Generative AI</span>
-                                <span class="badge-libs">RAG, NLP, LLMs, AI Applications</span>
-                            </div>
-                        </div>
-                        <div class="floating-badge badge-3">
-                             <i class="fas fa-brain"></i>
-                            <div class="badge-content">
-                                <span class="badge-title">Full-Stack</span>
-                                <span class="badge-libs">Flask, Django, HTML, CSS, JavaScript</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<!-- =========================================================
+     NAVIGATION
+========================================================= -->
+
+<header class="main-header" id="header">
+
+    <nav class="nav-container">
+
+        <div class="nav-brand">
+
+            <div class="brand-logo">
+
+                <span class="logo-bracket">&lt;</span>
+
+                <span class="logo-text">
+                    Karanya
+                </span>
+
+                <span class="logo-bracket">
+                    /&gt;
+                </span>
+
             </div>
-            
-            <div class="scroll-indicator">
-                <div class="scroll-mouse">
-                    <div class="scroll-wheel"></div>
-                </div>
-                <span class="scroll-text" data-text-en="Scroll Down" >Scroll Down</span>
-            </div>
-        </section>
 
-        <!-- About Section -->
-        <section id="about" class="section about-section">
-            <div class="section-container">
-                <div class="section-header">
-                    <span class="section-number">01</span>
-                    <h2 class="section-title">
-                        <span class="title-bracket">&lt;</span>
-                        <span class="title-text" data-text-en="About Me" >About Me</span>
-                        <span class="title-bracket">/&gt;</span>
-                    </h2>
-                    <div class="section-line"></div>
-                </div>
-                
-                <div class="about-content">
-                    <div class="about-text-wrapper">
-                        <div class="about-intro">
-                            <p class="about-text" data-text-en="I am a Computer Science undergraduate specializing in Artificial Intelligenceand Machine Learning. I have experience in building academic projects usingPython, ML techniques, and web technologies.I am interested in developing scalable, user-focused applications that combine
-intelligent systems with clean interfaces.">
-                            AI & ML-focused Computer Science student with hands-on experience in Python, Generative AI, web development, and computer vision.
+        </div>
 
-Passionate about building practical, intelligent solutions that combine technology, data, and clean user experiences.
 
-                            </p>
-                        </div>
-                        
-                        <div class="about-stats">
-                            <div class="stat-item">
-                                <div class="stat-number" data-count="2027">2027</div>
-                                <div class="stat-label" data-text-en="Graduation" >Graduation</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-number" data-count="4++">4++</div>
-                                <div class="stat-label" data-text-en="Major Projects" >Major Projects</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-number" data-count="10++">10++</div>
-                                <div class="stat-label" data-text-en="Certifications & Events" >Certifications & Events</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="about-image-wrapper">
-                        <div class="about-image-container">
-                            <div class="code-block">
-                                <div class="code-line">
-                                    <span class="code-keyword">const</span>
-                                    <span class="code-variable">developer</span>
-                                    <span class="code-operator">=</span>
-                                    <span class="code-brace">{</span>
-                                </div>
-                                <div class="code-line indent">
-                                    <span class="code-property">name</span>
-                                    <span class="code-operator">:</span>
-                                    <span class="code-string">'Karanya'</span>
-                                    <span class="code-comma">,</span>
-                                </div>
-                                    <div class="code-line indent">
-                                    <span class="code-property">Focus</span>
-                                    <span class="code-operator">:</span>
-                                    <span class="code-bracket">[</span>
-                                    <span class="code-string">'AI/ML'</span>
-                                    <span class="code-comma">,</span>
-                                    <span class="code-string">'Gen AI'</span>
-                                    <span class="code-comma">,</span>
-                                      <span class="code-string">'Web'</span>
-                                    <span class="code-bracket">]</span>
-                                    <span class="code-comma">,</span>
-                                </div>
-                                <div class="code-line indent">
-                                    <span class="code-property">skills</span>
-                                    <span class="code-operator">:</span>
-                                    <span class="code-bracket">[</span>
-                                    <span class="code-string">'Java'</span>
-                                    <span class="code-comma">,</span>
-                                    <span class="code-string">'MySql'</span>
-                                    <span class="code-comma">,</span>
-                                      <span class="code-string">'Python'</span>
-                                    <span class="code-comma">,</span>
-                                           <span class="code-string">'RAG'</span>
-                                    <span class="code-comma">,</span>
-                                    <span class="code-string">'Figma'</span>
-                                    <span class="code-bracket">]</span>
-                                
-                                </div>
-                                <div class="code-line indent">
-                                    <span class="code-property">passion</span>
-                                    <span class="code-operator">:</span>
-                                    <span class="code-bracket">[</span>
-                                    <span class="code-string">'Coding','Design'</span>
-                                    <span class="code-bracket">]</span>
-                                </div>
-                                <div class="code-line">
-                                    <span class="code-brace">}</span>
-                                    <span class="code-semicolon">;</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <!-- NAVIGATION MENU -->
 
-        <!-- Skills Section -->
-         
-<!-- ==================== SKILLS SECTION ==================== -->
-<section id="skills" class="section skills-section">
+        <div class="nav-menu" id="navMenu">
 
-    <div class="section-container">
+            <a href="#home"
+               class="nav-link active"
+               data-section="home">
 
-        <!-- Section Header -->
-        <div class="section-header">
+                <i class="fas fa-home"></i>
 
-            <span class="section-number">02</span>
+                <span class="nav-text"
+                      data-text-en="Home">
+                    Home
+                </span>
 
-            <h2 class="section-title">
-                <span class="title-bracket">&lt;</span>
+            </a>
 
-                <span class="title-text" data-text-en="Skills">
+
+            <a href="#about"
+               class="nav-link"
+               data-section="about">
+
+                <i class="fas fa-user"></i>
+
+                <span class="nav-text"
+                      data-text-en="About">
+                    About
+                </span>
+
+            </a>
+
+
+            <a href="#skills"
+               class="nav-link"
+               data-section="skills">
+
+                <i class="fas fa-code"></i>
+
+                <span class="nav-text"
+                      data-text-en="Skills">
                     Skills
                 </span>
 
-                <span class="title-bracket">/&gt;</span>
+            </a>
+
+
+            <a href="#experience"
+               class="nav-link"
+               data-section="experience">
+
+                <i class="fas fa-briefcase"></i>
+
+                <span class="nav-text"
+                      data-text-en="Experience">
+                    Experience
+                </span>
+
+            </a>
+
+
+            <a href="#projects"
+               class="nav-link"
+               data-section="projects">
+
+                <i class="fas fa-rocket"></i>
+
+                <span class="nav-text"
+                      data-text-en="Projects">
+                    Projects
+                </span>
+
+            </a>
+
+
+            <a href="#contact"
+               class="nav-link"
+               data-section="contact">
+
+                <i class="fas fa-envelope"></i>
+
+                <span class="nav-text"
+                      data-text-en="Contact">
+                    Contact
+                </span>
+
+            </a>
+
+        </div>
+
+
+        <!-- NAV CONTROLS -->
+
+        <div class="nav-controls">
+
+            <!-- Language -->
+            <button class="lang-toggle"
+                    id="langToggle"
+                    title="Toggle Language">
+
+                <i class="fas fa-language"></i>
+
+                <span class="lang-text">
+                    AR
+                </span>
+
+            </button>
+
+
+            <!-- Resume -->
+            <a href="KARANYA_C.S_resume.pdf"
+               download
+               class="resume-nav-link"
+               title="Download Resume"
+               aria-label="Download Resume">
+
+                <i class="fas fa-download"></i>
+
+            </a>
+
+
+            <!-- Theme -->
+            <button class="theme-toggle"
+                    id="themeToggle"
+                    title="Toggle Theme">
+
+                <i class="fas fa-moon"></i>
+
+            </button>
+
+
+            <!-- Mobile Menu -->
+            <button class="menu-toggle"
+                    id="menuToggle"
+                    title="Toggle Menu">
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </button>
+
+        </div>
+
+    </nav>
+
+</header>
+
+
+<!-- =========================================================
+     MAIN CONTENT
+========================================================= -->
+
+<main class="main-content">
+
+
+<!-- =========================================================
+     HERO SECTION
+========================================================= -->
+
+<section id="home"
+         class="hero-section">
+
+    <div class="hero-background">
+
+        <div class="code-grid-bg"></div>
+
+        <div class="floating-particles"
+             id="particles">
+        </div>
+
+    </div>
+
+
+    <div class="hero-container">
+
+        <!-- HERO TEXT -->
+
+        <div class="hero-content">
+
+            <div class="hero-greeting">
+
+                <span class="greeting-text"
+                      data-text-en="Hello, I'm">
+
+                    Hello, I'm
+
+                </span>
+
+                <span class="greeting-cursor">
+                    |
+                </span>
+
+            </div>
+
+
+            <h1 class="hero-name"
+                id="heroName">
+
+                <span class="name-prefix">
+                    C.S. Karanya
+                </span>
+
+            </h1>
+
+
+            <div class="hero-title">
+
+                <span class="title-prefix">
+                    Artificial Intelligence &amp; Machine Learning
+                </span>
+
+                <span class="title-text">
+                    AI/ML | Generative AI | Full-Stack Development
+                </span>
+
+            </div>
+
+
+            <p class="hero-description">
+
+                Computer Science undergraduate specializing in
+                Artificial Intelligence, Machine Learning, UI/UX
+                and Full-Stack Development.
+
+            </p>
+
+
+            <!-- HERO BUTTONS -->
+
+            <div class="hero-buttons">
+
+                <a href="#contact"
+                   class="btn btn-primary">
+
+                    <span>
+                        Get In Touch
+                    </span>
+
+                    <i class="fas fa-arrow-right"></i>
+
+                </a>
+
+
+                <a href="#projects"
+                   class="btn btn-secondary">
+
+                    <span>
+                        View Projects
+                    </span>
+
+                    <i class="fas fa-code"></i>
+
+                </a>
+
+            </div>
+
+
+            <!-- SOCIAL LINKS -->
+
+            <div class="hero-social">
+
+                <!-- GitHub -->
+                <a href="https://github.com/Karanya-CS"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="social-icon"
+                   title="GitHub">
+
+                    <i class="fab fa-github"></i>
+
+                </a>
+
+
+                <!-- LinkedIn -->
+                <a href="https://www.linkedin.com/in/karanya-c-s-480546299"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="social-icon"
+                   title="LinkedIn">
+
+                    <i class="fab fa-linkedin-in"></i>
+
+                </a>
+
+
+                <!-- Medium -->
+                <a href="https://medium.com/@karanya104"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="social-icon"
+                   title="Medium">
+
+                    <i class="fab fa-medium"></i>
+
+                </a>
+
+
+                <!-- CodeChef -->
+                <a href="https://www.codechef.com/users/kind_jaguar_17"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="social-icon"
+                   title="CodeChef">
+
+                    <i class="fas fa-laptop-code"></i>
+
+                </a>
+
+
+                <!-- Email -->
+                <a href="mailto:karanya104@gmail.com"
+                   class="social-icon"
+                   title="Email"
+                   aria-label="Email Karanya">
+
+                    <i class="fas fa-envelope"></i>
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- HERO IMAGE -->
+
+        <div class="hero-image-wrapper">
+
+            <div class="hero-image-container">
+
+                <div class="profile-image-glow"></div>
+
+
+                <div class="profile-image-frame">
+
+                    <div class="profile-image"
+                         id="profileImage">
+
+                        <img src="ai agent.jpg"
+                             alt="Karanya C.S Profile Photo"
+                             class="profile-photo image2">
+
+                        <div class="profile-placeholder"></div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- BADGE 1 -->
+
+                <div class="floating-badge badge-1">
+
+                    <i class="fab fa-python"></i>
+
+                    <div class="badge-content">
+
+                        <span class="badge-title">
+                            AI / ML
+                        </span>
+
+                        <span class="badge-libs">
+                            Python, Machine Learning, Deep Learning
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- BADGE 2 -->
+
+                <div class="floating-badge badge-2">
+
+                    <i class="fas fa-brain"></i>
+
+                    <div class="badge-content">
+
+                        <span class="badge-title">
+                            Generative AI
+                        </span>
+
+                        <span class="badge-libs">
+                            RAG, NLP, LLMs, AI Applications
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- BADGE 3 -->
+
+                <div class="floating-badge badge-3">
+
+                    <i class="fas fa-laptop-code"></i>
+
+                    <div class="badge-content">
+
+                        <span class="badge-title">
+                            Full-Stack
+                        </span>
+
+                        <span class="badge-libs">
+                            Flask, Django, HTML, CSS, JavaScript
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- SCROLL INDICATOR -->
+
+    <div class="scroll-indicator">
+
+        <div class="scroll-mouse">
+
+            <div class="scroll-wheel"></div>
+
+        </div>
+
+        <span class="scroll-text">
+            Scroll Down
+        </span>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     ABOUT SECTION
+========================================================= -->
+
+<section id="about"
+         class="section about-section">
+
+    <div class="section-container">
+
+        <div class="section-header">
+
+            <span class="section-number">
+                01
+            </span>
+
+            <h2 class="section-title">
+
+                <span class="title-bracket">
+                    &lt;
+                </span>
+
+                <span class="title-text">
+                    About Me
+                </span>
+
+                <span class="title-bracket">
+                    /&gt;
+                </span>
+
             </h2>
 
             <div class="section-line"></div>
@@ -357,23 +589,348 @@ Passionate about building practical, intelligent solutions that combine technolo
         </div>
 
 
-        <!-- ==================== SKILLS GRID ==================== -->
+        <div class="about-content">
+
+
+            <!-- ABOUT TEXT -->
+
+            <div class="about-text-wrapper">
+
+                <div class="about-intro">
+
+                    <p class="about-text">
+
+                        AI &amp; ML-focused Computer Science student
+                        with hands-on experience in Python,
+                        Generative AI, web development, and
+                        computer vision.
+
+                        <br><br>
+
+                        Passionate about building practical,
+                        intelligent solutions that combine
+                        technology, data, and clean user experiences.
+
+                    </p>
+
+                </div>
+
+
+                <!-- STATS -->
+
+                <div class="about-stats">
+
+                    <div class="stat-item">
+
+                        <div class="stat-number"
+                             data-count="2027">
+                            2027
+                        </div>
+
+                        <div class="stat-label">
+                            Graduation
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-item">
+
+                        <div class="stat-number"
+                             data-count="4">
+                            4+
+                        </div>
+
+                        <div class="stat-label">
+                            Major Projects
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-item">
+
+                        <div class="stat-number"
+                             data-count="10">
+                            10+
+                        </div>
+
+                        <div class="stat-label">
+                            Certifications &amp; Events
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- CODE CARD -->
+
+            <div class="about-image-wrapper">
+
+                <div class="about-image-container">
+
+                    <div class="code-block">
+
+                        <div class="code-line">
+
+                            <span class="code-keyword">
+                                const
+                            </span>
+
+                            <span class="code-variable">
+                                developer
+                            </span>
+
+                            <span class="code-operator">
+                                =
+                            </span>
+
+                            <span class="code-brace">
+                                {
+                            </span>
+
+                        </div>
+
+
+                        <div class="code-line indent">
+
+                            <span class="code-property">
+                                name
+                            </span>
+
+                            <span class="code-operator">
+                                :
+                            </span>
+
+                            <span class="code-string">
+                                'Karanya'
+                            </span>
+
+                            <span class="code-comma">
+                                ,
+                            </span>
+
+                        </div>
+
+
+                        <div class="code-line indent">
+
+                            <span class="code-property">
+                                focus
+                            </span>
+
+                            <span class="code-operator">
+                                :
+                            </span>
+
+                            <span class="code-bracket">
+                                [
+                            </span>
+
+                            <span class="code-string">
+                                'AI/ML'
+                            </span>
+
+                            <span class="code-comma">
+                                ,
+                            </span>
+
+                            <span class="code-string">
+                                'Gen AI'
+                            </span>
+
+                            <span class="code-comma">
+                                ,
+                            </span>
+
+                            <span class="code-string">
+                                'Web'
+                            </span>
+
+                            <span class="code-bracket">
+                                ]
+                            </span>
+
+                            <span class="code-comma">
+                                ,
+                            </span>
+
+                        </div>
+
+
+                        <div class="code-line indent">
+
+                            <span class="code-property">
+                                skills
+                            </span>
+
+                            <span class="code-operator">
+                                :
+                            </span>
+
+                            <span class="code-bracket">
+                                [
+                            </span>
+
+                            <span class="code-string">
+                                'Java'
+                            </span>
+
+                            <span class="code-comma">
+                                ,
+                            </span>
+
+                            <span class="code-string">
+                                'MySQL'
+                            </span>
+
+                            <span class="code-comma">
+                                ,
+                            </span>
+
+                            <span class="code-string">
+                                'Python'
+                            </span>
+
+                            <span class="code-comma">
+                                ,
+                            </span>
+
+                            <span class="code-string">
+                                'RAG'
+                            </span>
+
+                            <span class="code-comma">
+                                ,
+                            </span>
+
+                            <span class="code-string">
+                                'Figma'
+                            </span>
+
+                            <span class="code-bracket">
+                                ]
+                            </span>
+
+                            <span class="code-comma">
+                                ,
+                            </span>
+
+                        </div>
+
+
+                        <div class="code-line indent">
+
+                            <span class="code-property">
+                                passion
+                            </span>
+
+                            <span class="code-operator">
+                                :
+                            </span>
+
+                            <span class="code-bracket">
+                                [
+                            </span>
+
+                            <span class="code-string">
+                                'Coding'
+                            </span>
+
+                            <span class="code-comma">
+                                ,
+                            </span>
+
+                            <span class="code-string">
+                                'Design'
+                            </span>
+
+                            <span class="code-bracket">
+                                ]
+                            </span>
+
+                        </div>
+
+
+                        <div class="code-line">
+
+                            <span class="code-brace">
+                                }
+                            </span>
+
+                            <span class="code-semicolon">
+                                ;
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     SKILLS SECTION
+========================================================= -->
+
+<section id="skills"
+         class="section skills-section">
+
+    <div class="section-container">
+
+
+        <div class="section-header">
+
+            <span class="section-number">
+                02
+            </span>
+
+            <h2 class="section-title">
+
+                <span class="title-bracket">
+                    &lt;
+                </span>
+
+                <span class="title-text">
+                    Skills
+                </span>
+
+                <span class="title-bracket">
+                    /&gt;
+                </span>
+
+            </h2>
+
+            <div class="section-line"></div>
+
+        </div>
+
+
         <div class="skills-grid">
 
 
-            <!-- ==================================================
-                 CARD 01 — AI / ML
-                 ================================================== -->
+            <!-- AI / ML -->
+
             <div class="skill-category">
 
-                <h3 class="category-title" data-text-en="AI / ML">
+                <h3 class="category-title">
                     AI / ML
                 </h3>
 
                 <div class="skill-items">
 
 
-                    <!-- RAG -->
                     <div class="skill-item"
                          data-skill="RAG"
                          data-percent="88">
@@ -397,7 +954,6 @@ Passionate about building practical, intelligent solutions that combine technolo
                     </div>
 
 
-                    <!-- NLP -->
                     <div class="skill-item"
                          data-skill="NLP"
                          data-percent="85">
@@ -421,7 +977,6 @@ Passionate about building practical, intelligent solutions that combine technolo
                     </div>
 
 
-                    <!-- Generative AI -->
                     <div class="skill-item"
                          data-skill="Generative AI"
                          data-percent="90">
@@ -445,7 +1000,6 @@ Passionate about building practical, intelligent solutions that combine technolo
                     </div>
 
 
-                    <!-- Fine-tuning -->
                     <div class="skill-item"
                          data-skill="Fine-tuning"
                          data-percent="82">
@@ -469,7 +1023,6 @@ Passionate about building practical, intelligent solutions that combine technolo
                     </div>
 
 
-                    <!-- Transfer Learning -->
                     <div class="skill-item"
                          data-skill="Transfer Learning"
                          data-percent="80">
@@ -493,7 +1046,6 @@ Passionate about building practical, intelligent solutions that combine technolo
                     </div>
 
 
-                    <!-- GAN -->
                     <div class="skill-item"
                          data-skill="GAN"
                          data-percent="78">
@@ -516,26 +1068,22 @@ Passionate about building practical, intelligent solutions that combine technolo
 
                     </div>
 
-
                 </div>
 
             </div>
 
 
+            <!-- DEVELOPMENT -->
 
-            <!-- ==================================================
-                 CARD 02 — DEVELOPMENT
-                 ================================================== -->
             <div class="skill-category">
 
-                <h3 class="category-title" data-text-en="Development">
+                <h3 class="category-title">
                     Development
                 </h3>
 
                 <div class="skill-items">
 
 
-                    <!-- Flask -->
                     <div class="skill-item"
                          data-skill="Flask"
                          data-percent="88">
@@ -559,7 +1107,6 @@ Passionate about building practical, intelligent solutions that combine technolo
                     </div>
 
 
-                    <!-- Django -->
                     <div class="skill-item"
                          data-skill="Django"
                          data-percent="85">
@@ -583,7 +1130,6 @@ Passionate about building practical, intelligent solutions that combine technolo
                     </div>
 
 
-                    <!-- HTML -->
                     <div class="skill-item"
                          data-skill="HTML"
                          data-percent="92">
@@ -607,7 +1153,6 @@ Passionate about building practical, intelligent solutions that combine technolo
                     </div>
 
 
-                    <!-- CSS -->
                     <div class="skill-item"
                          data-skill="CSS"
                          data-percent="90">
@@ -631,7 +1176,6 @@ Passionate about building practical, intelligent solutions that combine technolo
                     </div>
 
 
-                    <!-- JavaScript -->
                     <div class="skill-item"
                          data-skill="JavaScript"
                          data-percent="88">
@@ -655,7 +1199,6 @@ Passionate about building practical, intelligent solutions that combine technolo
                     </div>
 
 
-                    <!-- Git & GitHub -->
                     <div class="skill-item"
                          data-skill="Git & GitHub"
                          data-percent="90">
@@ -678,26 +1221,22 @@ Passionate about building practical, intelligent solutions that combine technolo
 
                     </div>
 
-
                 </div>
 
             </div>
 
 
+            <!-- DATA & PLATFORMS -->
 
-            <!-- ==================================================
-                 CARD 03 — DATA & PLATFORMS
-                 ================================================== -->
             <div class="skill-category">
 
-                <h3 class="category-title" data-text-en="Data & Platforms">
+                <h3 class="category-title">
                     Data &amp; Platforms
                 </h3>
 
                 <div class="skill-items">
 
 
-                    <!-- MySQL -->
                     <div class="skill-item"
                          data-skill="MySQL"
                          data-percent="95">
@@ -721,7 +1260,6 @@ Passionate about building practical, intelligent solutions that combine technolo
                     </div>
 
 
-                    <!-- MongoDB -->
                     <div class="skill-item"
                          data-skill="MongoDB"
                          data-percent="90">
@@ -745,7 +1283,6 @@ Passionate about building practical, intelligent solutions that combine technolo
                     </div>
 
 
-                    <!-- Excel -->
                     <div class="skill-item"
                          data-skill="Excel"
                          data-percent="88">
@@ -769,7 +1306,6 @@ Passionate about building practical, intelligent solutions that combine technolo
                     </div>
 
 
-                    <!-- Google Colab -->
                     <div class="skill-item"
                          data-skill="Google Colab"
                          data-percent="92">
@@ -793,7 +1329,6 @@ Passionate about building practical, intelligent solutions that combine technolo
                     </div>
 
 
-                    <!-- Power BI -->
                     <div class="skill-item"
                          data-skill="Power BI"
                          data-percent="80">
@@ -817,7 +1352,6 @@ Passionate about building practical, intelligent solutions that combine technolo
                     </div>
 
 
-                    <!-- VS Code -->
                     <div class="skill-item"
                          data-skill="VS Code"
                          data-percent="95">
@@ -840,26 +1374,22 @@ Passionate about building practical, intelligent solutions that combine technolo
 
                     </div>
 
-
                 </div>
 
             </div>
 
 
+            <!-- AI & DESIGN -->
 
-            <!-- ==================================================
-                 CARD 04 — AI & DESIGN TOOLS
-                 ================================================== -->
             <div class="skill-category">
 
-                <h3 class="category-title" data-text-en="AI & Design Tools">
+                <h3 class="category-title">
                     AI &amp; Design Tools
                 </h3>
 
                 <div class="skill-items">
 
 
-                    <!-- Claude -->
                     <div class="skill-item"
                          data-skill="Claude"
                          data-percent="88">
@@ -883,7 +1413,6 @@ Passionate about building practical, intelligent solutions that combine technolo
                     </div>
 
 
-                    <!-- Cursor -->
                     <div class="skill-item"
                          data-skill="Cursor"
                          data-percent="90">
@@ -907,7 +1436,6 @@ Passionate about building practical, intelligent solutions that combine technolo
                     </div>
 
 
-                    <!-- Antigravity -->
                     <div class="skill-item"
                          data-skill="Antigravity"
                          data-percent="85">
@@ -931,7 +1459,6 @@ Passionate about building practical, intelligent solutions that combine technolo
                     </div>
 
 
-                    <!-- Ollama -->
                     <div class="skill-item"
                          data-skill="Ollama"
                          data-percent="82">
@@ -955,7 +1482,6 @@ Passionate about building practical, intelligent solutions that combine technolo
                     </div>
 
 
-                    <!-- Figma -->
                     <div class="skill-item"
                          data-skill="Figma"
                          data-percent="90">
@@ -979,7 +1505,6 @@ Passionate about building practical, intelligent solutions that combine technolo
                     </div>
 
 
-                    <!-- Canva -->
                     <div class="skill-item"
                          data-skill="Canva"
                          data-percent="95">
@@ -1002,171 +1527,370 @@ Passionate about building practical, intelligent solutions that combine technolo
 
                     </div>
 
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     EXPERIENCE
+========================================================= -->
+
+<section id="experience"
+         class="section experience-section">
+
+    <div class="section-container">
+
+        <div class="section-header">
+
+            <span class="section-number">
+                03
+            </span>
+
+            <h2 class="section-title">
+
+                <span class="title-bracket">
+                    &lt;
+                </span>
+
+                <span class="title-text">
+                    Experience
+                </span>
+
+                <span class="title-bracket">
+                    /&gt;
+                </span>
+
+            </h2>
+
+            <div class="section-line"></div>
+
+        </div>
+
+
+        <div class="timeline">
+
+
+            <!-- EXPERIENCE 1 -->
+
+            <div class="timeline-item">
+
+                <div class="timeline-marker"></div>
+
+                <div class="timeline-content">
+
+                    <div class="timeline-header">
+
+                        <div class="timeline-year">
+                            Sep 2025 - Nov 2025
+                        </div>
+
+                    </div>
+
+
+                    <h3 class="timeline-title">
+                        Software Development Intern
+                    </h3>
+
+
+                    <div class="timeline-company">
+
+                        <i class="fas fa-building"></i>
+
+                        Cybernaut Edu Tech.
+
+                    </div>
+
+
+                    <p class="timeline-description">
+
+                        Worked as a Software Development Intern,
+                        contributing to web and application
+                        development projects.
+
+                        Assisted in designing user interfaces,
+                        implementing backend logic, and testing
+                        features.
+
+                        Gained hands-on experience in real-world
+                        software development practices.
+
+                    </p>
+
+
+                    <div class="timeline-achievements">
+
+                        <div class="achievement-item">
+
+                            <i class="fas fa-check-circle"></i>
+
+                            <span>
+                                Developed small modules and features
+                            </span>
+
+                        </div>
+
+
+                        <div class="achievement-item">
+
+                            <i class="fas fa-check-circle"></i>
+
+                            <span>
+                                Improved application performance
+                            </span>
+
+                        </div>
+
+
+                        <div class="achievement-item">
+
+                            <i class="fas fa-check-circle"></i>
+
+                            <span>
+                                Collaborated with senior developers
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="timeline-tags">
+
+                        <span class="tag">
+                            Web Scraping
+                        </span>
+
+                        <span class="tag">
+                            Flask
+                        </span>
+
+                        <span class="tag">
+                            Django
+                        </span>
+
+                        <span class="tag">
+                            Machine Learning
+                        </span>
+
+                        <span class="tag">
+                            Deep Learning
+                        </span>
+
+                    </div>
 
                 </div>
 
             </div>
 
 
+            <!-- EXPERIENCE 2 -->
+
+            <div class="timeline-item">
+
+                <div class="timeline-marker"></div>
+
+                <div class="timeline-content">
+
+                    <div class="timeline-header">
+
+                        <div class="timeline-year">
+                            Jun 2025 - Jul 2026
+                        </div>
+
+                    </div>
+
+
+                    <h3 class="timeline-title">
+                        Robotics &amp; IoT Trainee
+                    </h3>
+
+
+                    <div class="timeline-company">
+
+                        <i class="fas fa-building"></i>
+
+                        Zetspire Technologies
+
+                    </div>
+
+
+                    <p class="timeline-description">
+
+                        Completed hands-on training in Robotics
+                        and Internet of Things (IoT) systems.
+
+                        Worked on building and programming embedded
+                        systems using Raspberry Pi and sensors.
+
+                        Developed small automation projects and
+                        learned 3D modeling and prototyping techniques.
+
+                    </p>
+
+
+                    <div class="timeline-achievements">
+
+                        <div class="achievement-item">
+
+                            <i class="fas fa-check-circle"></i>
+
+                            <span>
+                                Built automation and IoT-based projects
+                            </span>
+
+                        </div>
+
+
+                        <div class="achievement-item">
+
+                            <i class="fas fa-check-circle"></i>
+
+                            <span>
+                                Integrated sensors with Raspberry Pi
+                            </span>
+
+                        </div>
+
+
+                        <div class="achievement-item">
+
+                            <i class="fas fa-check-circle"></i>
+
+                            <span>
+                                Designed basic 3D prototypes
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="timeline-tags">
+
+                        <span class="tag">
+                            Robotics
+                        </span>
+
+                        <span class="tag">
+                            Raspberry Pi
+                        </span>
+
+                        <span class="tag">
+                            IoT
+                        </span>
+
+                        <span class="tag">
+                            3D Modeling
+                        </span>
+
+                        <span class="tag">
+                            Embedded Systems
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
-        <!-- ==================== END SKILLS GRID ==================== -->
 
     </div>
 
 </section>
-<!-- ==================== END SKILLS SECTION ==================== -->
 
-        <!-- Experience Section -->
-        <section id="experience" class="section experience-section">
-            <div class="section-container">
-                <div class="section-header">
-                    <span class="section-number">03</span>
-                    <h2 class="section-title">
-                        <span class="title-bracket">&lt;</span>
-                        <span class="title-text" data-text-en="Experience" >Experience</span>
-                        <span class="title-bracket">/&gt;</span>
-                    </h2>
-                    <div class="section-line"></div>
-                </div>
-                
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-header">
-                                <div class="timeline-year">Sep 2025 - Nov 2025</div>
-                            </div>
-                            <h3 class="timeline-title" data-text-en="Software Development Intern" >Software Development Intern</h3>
-                            <div class="timeline-company">
-                                <i class="fas fa-building"></i>
-                             Cybernaut Edu Tech.
-                            </div>
-                               <p class="timeline-description">
-            Worked as a Software Development Intern, contributing to web and application development projects. 
-            Assisted in designing user interfaces, implementing backend logic, and testing features. 
-            Gained hands-on experience in real-world software development practices.
-                                    </p>
-                            <div class="timeline-achievements">
-                                <div class="achievement-item">
-                                    <i class="fas fa-check-circle"></i>
-                                    <span data-text-en="Developed small modules and features" >Developed small modules and features</span>
-                                </div>
-                                <div class="achievement-item">
-                                    <i class="fas fa-check-circle"></i>
-                                    <span data-text-en="Improved application performance" >Improved application performance</span>
-                                </div>
-                                <div class="achievement-item">
-                                    <i class="fas fa-check-circle"></i>
-                                    <span data-text-en="Collaborated with senior developers" >Collaborated with senior developers</span>
-                                </div>
-                            </div>
-                            <div class="timeline-tags">
-                                <span class="tag">Web Scraping</span>
-                                <span class="tag">Flask</span>
-                                <span class="tag">Django</span>
-                                <span class="tag">Machine Learning</span>
-                                <span class="tag">Deep learning</span>
-                            
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-header">
-                                <div class="timeline-year">Jun 2025 - July2026</div>
-                            </div>
-                            <h3 class="timeline-title" data-text-en="Robotics & IoT Trainee" >Robotics & IoT Trainee</h3>
-                            <div class="timeline-company">
-                                <i class="fas fa-building"></i>
-                               Zetspire Technologies
-                            </div>
-                            <p class="timeline-description">
-            Completed hands-on training in Robotics and Internet of Things (IoT) systems. 
-            Worked on building and programming embedded systems using Raspberry Pi and sensors. 
-            Developed small automation projects and learned 3D modeling and prototyping techniques.
-                                 </p>
-                            <div class="timeline-achievements">
-                                <div class="achievement-item">
-                                    <i class="fas fa-check-circle"></i>
-                                    <span data-text-en="Built automation and IoT-based projects" >Built automation and IoT-based projects</span>
-                                </div>
-                                <div class="achievement-item">
-                                    <i class="fas fa-check-circle"></i>
-                                    <span data-text-en="Integrated sensors with Raspberry Pi" >Integrated sensors with Raspberry Pi</span>
-                                </div>
-                                  <div class="achievement-item">
-                                        <i class="fas fa-check-circle"></i>
-                                        <span>Designed basic 3D prototypes</span>
-                                   </div>
-                            </div>
-                            <div class="timeline-tags">
-                                <span class="tag">Robotics</span>
-                                <span class="tag">Raspberry Pi</span>
-                                <span class="tag">IOT</span>
-                                <span class="tag">3D Modeling</span>
-                                 <span class="tag">Embedded Systems</span>
-                
-                            </div>
-                        </div>
-                    </div>
-                    
-        
-               
-        </section>
 
-        <!-- Projects Section -->
-<section id="projects" class="section projects-section">
+<!-- =========================================================
+     PROJECTS
+========================================================= -->
+
+<section id="projects"
+         class="section projects-section">
+
     <div class="section-container">
 
+
         <div class="section-header">
-            <span class="section-number">04</span>
+
+            <span class="section-number">
+                04
+            </span>
+
             <h2 class="section-title">
-                <span class="title-bracket">&lt;</span>
-                <span class="title-text" data-text-en="Projects">Projects</span>
-                <span class="title-bracket">/&gt;</span>
+
+                <span class="title-bracket">
+                    &lt;
+                </span>
+
+                <span class="title-text">
+                    Projects
+                </span>
+
+                <span class="title-bracket">
+                    /&gt;
+                </span>
+
             </h2>
+
             <div class="section-line"></div>
+
         </div>
+
 
         <div class="projects-grid">
 
 
-            <!-- Project 1 : Certificate Verification -->
+            <!-- PROJECT 1 -->
+
             <div class="project-card">
 
                 <div class="project-image">
 
                     <div class="project-overlay">
+
                         <div class="project-links">
 
-                            <!-- Live / Repo -->
                             <a href="https://github.com/KaraNexGen/Ai-certificate-verification-system"
                                class="project-link"
                                target="_blank"
+                               rel="noopener noreferrer"
                                title="View Project">
 
                                 <i class="fas fa-external-link-alt"></i>
+
                             </a>
 
-                            <!-- Code -->
+
                             <a href="https://github.com/KaraNexGen"
                                class="project-link"
                                target="_blank"
+                               rel="noopener noreferrer"
                                title="View Code">
 
                                 <i class="fab fa-github"></i>
+
                             </a>
 
                         </div>
+
                     </div>
 
+
                     <div class="project-placeholder">
+
                         <i class="fas fa-check-circle"></i>
+
                     </div>
 
                 </div>
+
 
                 <div class="project-content">
 
@@ -1174,54 +1898,89 @@ Passionate about building practical, intelligent solutions that combine technolo
                         AI Certificate Verification System
                     </h3>
 
+
                     <p class="project-description">
-                        AI powered certificate verification system using OCR, forgery detection, and database matching with optional blockchain support.
+
+                        AI-powered certificate verification system
+                        using OCR, forgery detection, and database
+                        matching with optional blockchain support.
+
                     </p>
 
+
                     <div class="project-tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">FastAPI</span>
-                        <span class="tag">OCR</span>
-                        <span class="tag">AI</span>
-                        <span class="tag">Blockchain</span>
+
+                        <span class="tag">
+                            Python
+                        </span>
+
+                        <span class="tag">
+                            FastAPI
+                        </span>
+
+                        <span class="tag">
+                            OCR
+                        </span>
+
+                        <span class="tag">
+                            AI
+                        </span>
+
+                        <span class="tag">
+                            Blockchain
+                        </span>
+
                     </div>
 
                 </div>
+
             </div>
 
 
-            <!-- Project 2 : Breast Cancer -->
+            <!-- PROJECT 2 -->
+
             <div class="project-card">
 
                 <div class="project-image">
 
                     <div class="project-overlay">
+
                         <div class="project-links">
 
                             <a href="https://github.com/KaraNexGen/breast-cancer-prediction"
                                class="project-link"
                                target="_blank"
+                               rel="noopener noreferrer"
                                title="View Project">
 
                                 <i class="fas fa-external-link-alt"></i>
+
                             </a>
+
 
                             <a href="https://github.com/KaraNexGen"
                                class="project-link"
                                target="_blank"
+                               rel="noopener noreferrer"
                                title="View Code">
 
                                 <i class="fab fa-github"></i>
+
                             </a>
 
                         </div>
+
                     </div>
 
+
                     <div class="project-placeholder">
+
                         <i class="fas fa-ribbon"></i>
+
                     </div>
 
                 </div>
+
 
                 <div class="project-content">
 
@@ -1229,54 +1988,88 @@ Passionate about building practical, intelligent solutions that combine technolo
                         Breast Cancer Prediction System
                     </h3>
 
+
                     <p class="project-description">
-                        AI-powered breast cancer prediction system using deep learning and medical image analysis.
+
+                        AI-powered breast cancer prediction system
+                        using deep learning and medical image analysis.
+
                     </p>
 
+
                     <div class="project-tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">Deep Learning</span>
-                        <span class="tag">PyTorch</span>
-                        <span class="tag">AI</span>
-                        <span class="tag">Streamlit</span>
+
+                        <span class="tag">
+                            Python
+                        </span>
+
+                        <span class="tag">
+                            Deep Learning
+                        </span>
+
+                        <span class="tag">
+                            PyTorch
+                        </span>
+
+                        <span class="tag">
+                            AI
+                        </span>
+
+                        <span class="tag">
+                            Streamlit
+                        </span>
+
                     </div>
 
                 </div>
+
             </div>
 
 
-            <!-- Project 3 : LLLT Bone X-Ray -->
+            <!-- PROJECT 3 -->
+
             <div class="project-card">
 
                 <div class="project-image">
 
                     <div class="project-overlay">
+
                         <div class="project-links">
 
                             <a href="https://github.com/KaraNexGen/IntelliFracture-AI-Bone-XRay-LLLT-System"
                                class="project-link"
                                target="_blank"
+                               rel="noopener noreferrer"
                                title="View Project">
 
                                 <i class="fas fa-external-link-alt"></i>
+
                             </a>
+
 
                             <a href="https://github.com/KaraNexGen"
                                class="project-link"
                                target="_blank"
+                               rel="noopener noreferrer"
                                title="View Code">
 
                                 <i class="fab fa-github"></i>
+
                             </a>
 
                         </div>
+
                     </div>
 
+
                     <div class="project-placeholder">
+
                         <i class="fas fa-laptop-medical"></i>
+
                     </div>
 
                 </div>
+
 
                 <div class="project-content">
 
@@ -1284,133 +2077,305 @@ Passionate about building practical, intelligent solutions that combine technolo
                         IntelliFracture AI Bone X-Ray LLLT System
                     </h3>
 
+
                     <p class="project-description">
-                        AI-based bone fracture detection and low-level laser therapy support system using X-ray analysis and deep learning.
+
+                        AI-based bone fracture detection and
+                        low-level laser therapy support system
+                        using X-ray analysis and deep learning.
+
                     </p>
 
+
                     <div class="project-tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">Deep Learning</span>
-                        <span class="tag">AI</span>
-                        <span class="tag">PyTorch</span>
-                        <span class="tag">Medical Imaging</span>
-                        <span class="tag">Streamlit</span>
+
+                        <span class="tag">
+                            Python
+                        </span>
+
+                        <span class="tag">
+                            Deep Learning
+                        </span>
+
+                        <span class="tag">
+                            AI
+                        </span>
+
+                        <span class="tag">
+                            PyTorch
+                        </span>
+
+                        <span class="tag">
+                            Medical Imaging
+                        </span>
+
+                        <span class="tag">
+                            Streamlit
+                        </span>
+
                     </div>
 
                 </div>
+
             </div>
 
 
         </div>
+
     </div>
+
 </section>
 
 
-        <!-- Contact Section -->
-        <section id="contact" class="section contact-section">
-            <div class="section-container">
-                <div class="section-header">
-                    <span class="section-number">05</span>
-                    <h2 class="section-title">
-                        <span class="title-bracket">&lt;</span>
-                        <span class="title-text" data-text-en="Contact" >Contact</span>
-                        <span class="title-bracket">/&gt;</span>
-                    </h2>
-                    <div class="section-line"></div>
-                </div>
-                
-                <div class="contact-content">
-                    <div class="contact-info">
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div class="contact-details">
-                                <h4 class="contact-label" data-text-en="Email" >Email</h4>
-                                <a href="karanya104@gmail.com" class="contact-value">karanya104@gmail.com</a>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-phone"></i>
-                            </div>
-                            <div class="contact-details">
-                                <h4 class="contact-label" data-text-en="Phone" >Phone</h4>
-                                <a href="tel:+919363066403" class="contact-value">+91 9363066403</a>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div class="contact-details">
-                                <h4 class="contact-label" data-text-en="Location" >Location</h4>
-                                <span class="contact-value" data-text-en="Gandhipuram,K.pudhur,Madurai" >Gandhipuram,K.pudhur,Madurai</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <form class="contact-form" id="contactForm">
-                        <div class="form-group">
-                            <input type="text" class="form-input" placeholder="Name" data-placeholder-en="Name"  required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" class="form-input" placeholder="Email" data-placeholder-en="Email" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-input" placeholder="Subject" data-placeholder-en="Subject" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea class="form-input form-textarea" rows="5" placeholder="Message" data-placeholder-en="Message"  required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-submit">
-                            <span data-text-en="Send Message" >Send Message</span>
-                            <i class="fas fa-paper-plane"></i>
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </section>
-    </main>
+<!-- =========================================================
+     CONTACT
+========================================================= -->
 
-    <!-- Footer -->
+<section id="contact"
+         class="section contact-section">
+
+    <div class="section-container">
+
+
+        <div class="section-header">
+
+            <span class="section-number">
+                05
+            </span>
+
+            <h2 class="section-title">
+
+                <span class="title-bracket">
+                    &lt;
+                </span>
+
+                <span class="title-text">
+                    Contact
+                </span>
+
+                <span class="title-bracket">
+                    /&gt;
+                </span>
+
+            </h2>
+
+            <div class="section-line"></div>
+
+        </div>
+
+
+        <div class="contact-content">
+
+
+            <!-- CONTACT INFO -->
+
+            <div class="contact-info">
+
+
+                <!-- EMAIL -->
+
+                <div class="contact-item">
+
+                    <div class="contact-icon">
+
+                        <i class="fas fa-envelope"></i>
+
+                    </div>
+
+
+                    <div class="contact-details">
+
+                        <h4 class="contact-label">
+                            Email
+                        </h4>
+
+                        <a href="mailto:karanya104@gmail.com"
+                           class="contact-value">
+
+                            karanya104@gmail.com
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PHONE -->
+
+                <div class="contact-item">
+
+                    <div class="contact-icon">
+
+                        <i class="fas fa-phone"></i>
+
+                    </div>
+
+
+                    <div class="contact-details">
+
+                        <h4 class="contact-label">
+                            Phone
+                        </h4>
+
+                        <a href="tel:+919363066403"
+                           class="contact-value">
+
+                            +91 9363066403
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- LOCATION -->
+
+                <div class="contact-item">
+
+                    <div class="contact-icon">
+
+                        <i class="fas fa-map-marker-alt"></i>
+
+                    </div>
+
+
+                    <div class="contact-details">
+
+                        <h4 class="contact-label">
+                            Location
+                        </h4>
+
+                        <span class="contact-value">
+
+                            Gandhipuram, K. Pudhur, Madurai
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- CONTACT FORM -->
+
+            <form class="contact-form"
+                  id="contactForm">
+
+                <div class="form-group">
+
+                    <input type="text"
+                           class="form-input"
+                           placeholder="Name"
+                           required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <input type="email"
+                           class="form-input"
+                           placeholder="Email"
+                           required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <input type="text"
+                           class="form-input"
+                           placeholder="Subject"
+                           required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <textarea class="form-input form-textarea"
+                              rows="5"
+                              placeholder="Message"
+                              required></textarea>
+
+                </div>
+
+
+                <button type="submit"
+                        class="btn btn-primary btn-submit">
+
+                    <span>
+                        Send Message
+                    </span>
+
+                    <i class="fas fa-paper-plane"></i>
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
 <footer class="main-footer">
 
     <div class="footer-container">
+
         <div class="footer-content">
 
 
-            <!-- Footer Text -->
+            <!-- FOOTER TEXT -->
+
             <div class="footer-text-wrapper">
 
                 <p class="footer-text">
+
                     <span class="footer-copyright">
-                        © 2025 Developer Portfolio
+                        © 2026 Developer Portfolio
                     </span>
 
-                    <span class="footer-divider">•</span>
+                    <span class="footer-divider">
+                        •
+                    </span>
 
                     <span class="footer-built">
                         Built with passion and code
                     </span>
+
                 </p>
 
 
                 <p class="footer-author">
 
-                    <span class="footer-by-text" data-text-en="by" data-text-ar="بواسطة">
+                    <span class="footer-by-text">
                         by
                     </span>
 
-                    <a href="https://www.github.com/Karanya-CS"
+
+                    <a href="https://github.com/Karanya-CS"
                        target="_blank"
                        rel="noopener noreferrer"
                        class="footer-author-link">
 
                         <i class="fas fa-code"></i>
-                        <span>Karanya</span>
+
+                        <span>
+                            Karanya
+                        </span>
 
                     </a>
 
@@ -1419,10 +2384,13 @@ Passionate about building practical, intelligent solutions that combine technolo
             </div>
 
 
-            <!-- Social Links -->
+            <!-- FOOTER SOCIAL -->
+
             <div class="footer-social">
 
-                <!-- LinkedIn -->
+
+                <!-- LINKEDIN -->
+
                 <a href="https://www.linkedin.com/in/karanya-c-s-480546299"
                    target="_blank"
                    rel="noopener noreferrer"
@@ -1434,8 +2402,9 @@ Passionate about building practical, intelligent solutions that combine technolo
                 </a>
 
 
-                <!-- GitHub -->
-                <a href="https://www.github.com/Karanya-CS"
+                <!-- GITHUB -->
+
+                <a href="https://github.com/Karanya-CS"
                    target="_blank"
                    rel="noopener noreferrer"
                    class="footer-social-link"
@@ -1445,40 +2414,49 @@ Passionate about building practical, intelligent solutions that combine technolo
 
                 </a>
 
-                <!-- Resume Download -->
+
+                <!-- RESUME -->
+
                 <a href="KARANYA_C.S_resume.pdf"
                    download
                    class="footer-social-link"
                    title="Download Resume"
                    aria-label="Download Resume">
+
                     <i class="fas fa-file-arrow-down"></i>
+
                 </a>
 
 
-                <!-- Email -->
-           <a href="https://mail.google.com/mail/?view=cm&fs=1&to=karanya104@gmail.com"
-   target="_blank"
-   rel="noopener noreferrer"
-   class="footer-social-link"
-   title="Email">
-    <i class="fas fa-envelope"></i>
-</a>
+                <!-- EMAIL -->
+
+                <a href="mailto:karanya104@gmail.com"
+                   class="footer-social-link"
+                   title="Email">
+
+                    <i class="fas fa-envelope"></i>
+
                 </a>
 
             </div>
 
-
         </div>
+
     </div>
 
 </footer>
 
 
-    <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-    <!-- Motion One loaded dynamically -->
-    <script src="js/animations.js"></script>
-    <script src="js/index.js"></script>
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+
+<script src="js/animations.js"></script>
+
+<script src="js/index.js"></script>
+
+
 </body>
 </html>
-
